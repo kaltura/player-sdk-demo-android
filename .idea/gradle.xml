@@ -11,11 +11,11 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/castCompanionLibraryandroid" />
-            <option value="$PROJECT_DIR$/exoPlayerLib" />
-            <option value="$PROJECT_DIR$/googlemediaframework" />
-            <option value="$PROJECT_DIR$/hLSPlayerSDK" />
-            <option value="$PROJECT_DIR$/playerSDK" />
+            <option value="$PROJECT_DIR$/../player-sdk-native-android/castCompanionLibraryandroid" />
+            <option value="$PROJECT_DIR$/../player-sdk-native-android/exoPlayerLib" />
+            <option value="$PROJECT_DIR$/../player-sdk-native-android/googlemediaframework" />
+            <option value="$PROJECT_DIR$/../player-sdk-native-android/hLSPlayerSDK" />
+            <option value="$PROJECT_DIR$/../player-sdk-native-android/playerSDK" />
           </set>
         </option>
       </GradleProjectSettings>

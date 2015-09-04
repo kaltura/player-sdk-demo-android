@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kaltura.com.kalturaplaydemo" >
+    package="com.kaltura.kalturaplayerdemos" >
 
     <application
         android:allowBackup="true"

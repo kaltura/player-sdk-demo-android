@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/KalturaPlayDemo.iml" filepath="$PROJECT_DIR$/KalturaPlayDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/castCompanionLibraryandroid/castCompanionLibraryandroid.iml" filepath="$PROJECT_DIR$/castCompanionLibraryandroid/castCompanionLibraryandroid.iml" />
-      <module fileurl="file://$PROJECT_DIR$/exoPlayerLib/exoPlayerLib.iml" filepath="$PROJECT_DIR$/exoPlayerLib/exoPlayerLib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/googlemediaframework/googlemediaframework.iml" filepath="$PROJECT_DIR$/googlemediaframework/googlemediaframework.iml" />
-      <module fileurl="file://$PROJECT_DIR$/hLSPlayerSDK/hLSPlayerSDK.iml" filepath="$PROJECT_DIR$/hLSPlayerSDK/hLSPlayerSDK.iml" />
-      <module fileurl="file://$PROJECT_DIR$/playerSDK/playerSDK.iml" filepath="$PROJECT_DIR$/playerSDK/playerSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../player-sdk-native-android/castCompanionLibraryandroid/castCompanionLibraryandroid.iml" filepath="$PROJECT_DIR$/../player-sdk-native-android/castCompanionLibraryandroid/castCompanionLibraryandroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../player-sdk-native-android/exoPlayerLib/exoPlayerLib.iml" filepath="$PROJECT_DIR$/../player-sdk-native-android/exoPlayerLib/exoPlayerLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../player-sdk-native-android/googlemediaframework/googlemediaframework.iml" filepath="$PROJECT_DIR$/../player-sdk-native-android/googlemediaframework/googlemediaframework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../player-sdk-native-android/hLSPlayerSDK/hLSPlayerSDK.iml" filepath="$PROJECT_DIR$/../player-sdk-native-android/hLSPlayerSDK/hLSPlayerSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../player-sdk-native-android/hLSPlayerSDK/hLSPlayerSDK.iml" filepath="$PROJECT_DIR$/../player-sdk-native-android/hLSPlayerSDK/hLSPlayerSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/player-sdk-demo-android.iml" filepath="$PROJECT_DIR$/player-sdk-demo-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../player-sdk-native-android/playerSDK/playerSDK.iml" filepath="$PROJECT_DIR$/../player-sdk-native-android/playerSDK/playerSDK.iml" />
     </modules>
   </component>
 </project>

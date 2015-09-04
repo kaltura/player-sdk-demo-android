@@ -1,1 +1,20 @@
-include ':app', ':playerSDK', ':exoPlayerLib', ':castCompanionLibraryandroid', ':hLSPlayerSDK', ':googlemediaframework'
+include ':app'
+
+include ':castCompanionLibraryandroid'
+project(':castCompanionLibraryandroid').projectDir=new File('../player-sdk-native-android/castCompanionLibraryandroid')
+
+include ':exoPlayerLib'
+project(':exoPlayerLib').projectDir=new File('../player-sdk-native-android/exoPlayerLib')
+
+
+include ':googlemediaframework'
+project(':googlemediaframework').projectDir=new File('../player-sdk-native-android/googlemediaframework')
+
+
+include ':hLSPlayerSDK'
+project(':hLSPlayerSDK').projectDir=new File('../player-sdk-native-android/hLSPlayerSDK')
+
+
+include ':playerSDK'
+project(':playerSDK').projectDir=new File('../player-sdk-native-android/playerSDK')
+
