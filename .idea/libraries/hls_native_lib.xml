@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="hls-native-lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/hLSPlayerSDK/libs/hls-native-lib.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

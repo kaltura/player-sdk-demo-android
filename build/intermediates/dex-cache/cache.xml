@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
+        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/pre-dexed/debug/classes-34b3b05fe57e505c35fa250303a66e6ba29615ca.jar" />
+    </item>
+    <item
+        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/exploded-aar/KalturaPlayDemo/hLSPlayerSDK/unspecified/jars/libs/hls-native-lib.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3c4a4412fb83eff458d6df0eb2c241dbd59d3b57">
+        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/pre-dexed/debug/hls-native-lib-133fc4c608e85763cd2485412587ba582db1a20e.jar" />
+    </item>
+    <item
+        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/exploded-aar/KalturaPlayDemo/castCompanionLibraryandroid/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ed35cb9d9edc21b8f4cae084f134697dec3c6214">
+        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/pre-dexed/debug/classes-9d7ec5269ddd47b127a40dd895a8a94483bf19a7.jar" />
+    </item>
+    <item
+        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/21.0.3/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="5dc9da0a5a17b7b4d607a9b3aef0fb1245a8804f">
+        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/pre-dexed/debug/classes-35ef4174cb369676f1b7cf647b0c427fc669c3d5.jar" />
+    </item>
+    <item
+        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
+        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/pre-dexed/debug/classes-4ce8e67f3cabeab77d5f1c6230d3296cc08a95c4.jar" />
+    </item>
+    <item
+        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/exploded-aar/KalturaPlayDemo/playerSDK/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2e84fd3be3873bbb48b1a6d5d52f35437b9f9a66">
+        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/pre-dexed/debug/classes-bbecc571afce7cb937df67acb8ce2c6f6cd2d646.jar" />
+    </item>
+    <item
+        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/exploded-aar/KalturaPlayDemo/hLSPlayerSDK/unspecified/jars/libs/android-async-http-1.4.6.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a845a88238be0b5be9d238652c1bc0605ef91f52">
+        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.6-176751ba4369c116336c1cbc85b882f87194f66f.jar" />
+    </item>
+    <item
+        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/jars/libs/internal_impl-22.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
+        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.1-80a1bb577d715ecc802ebc4fc44400d75a55d865.jar" />
+    </item>
+    <item
+        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/exploded-aar/KalturaPlayDemo/googlemediaframework/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9ffc33cf6e30afaeb5b0c1cc7ea75b8246c7820e">
+        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/pre-dexed/debug/classes-9b34209f3b071cc3944d02358add5a599a870f90.jar" />
+    </item>
+    <item
+        jar="/Users/nissopa/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.1/support-annotations-22.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
+        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-aea0194e9d3ead148e1c0b22a39ca73e4714774d.jar" />
+    </item>
+    <item
+        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/21.0.3/jars/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="96d5b5061120b177878f02ae4c10aa6f09cbff02">
+        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-79334965cfdb30f310b8cd16716317ae3ba4435d.jar" />
+    </item>
+    <item
+        jar="/Users/nissopa/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/pre-dexed/debug/gson-2.3.1-5f37cc6077e3d885884476492eb96e9b5281a113.jar" />
+    </item>
+    <item
+        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/exploded-aar/KalturaPlayDemo/playerSDK/unspecified/jars/libs/ima-android-sdk-beta9.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f9d5370011db26ce6c39e89c5249f67dec643fdb">
+        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/pre-dexed/debug/ima-android-sdk-beta9-8af27fd55a57c9786702b3a12829554829fe82f7.jar" />
+    </item>
+    <item
+        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/exploded-aar/KalturaPlayDemo/exoPlayerLib/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="565d19e63f4b26d7d862ffa587896d22bdc2df13">
+        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/pre-dexed/debug/classes-cfb97b9e33d917d19bde71eb3ac59a90976a36c1.jar" />
+    </item>
+    <item
+        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/exploded-aar/KalturaPlayDemo/hLSPlayerSDK/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="843f732004f2218bfa547602aab631935167309a">
+        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/pre-dexed/debug/classes-c0a8c7af28061981a3173331b06bdc0ae6503741.jar" />
+    </item>
+    <item
+        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/app/build/intermediates/pre-dexed/debug/classes-6e757095a624f12e0b1e65b765a885e304c1608f.jar" />
+    </item>
+
+</items>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/hLSPlayerSDK/src/main/res"><file name="ic_launcher" path="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/hLSPlayerSDK/src/main/res/drawable-hdpi/ic_launcher.png" qualifiers="hdpi" type="drawable"/><file name="ic_launcher" path="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/hLSPlayerSDK/src/main/res/drawable-mdpi/ic_launcher.png" qualifiers="mdpi" type="drawable"/><file name="ic_launcher" path="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/hLSPlayerSDK/src/main/res/drawable-xhdpi/ic_launcher.png" qualifiers="xhdpi" type="drawable"/><file name="ic_launcher" path="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/hLSPlayerSDK/src/main/res/drawable-xxhdpi/ic_launcher.png" qualifiers="xxhdpi" type="drawable"/><file path="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/hLSPlayerSDK/src/main/res/values/strings.xml" qualifiers=""><string name="app_name">HLSPlayerSDK</string></file><file path="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/hLSPlayerSDK/src/main/res/values/styles.xml" qualifiers=""><style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style><style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style></file></source><source path="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/hLSPlayerSDK/build/generated/res/rs/release"/><source path="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/hLSPlayerSDK/build/generated/res/generated/release"/></dataSet><dataSet config="release"><source path="/Users/nissopa/Desktop/KalturaAndroidProjects/KalturaPlayDemo/hLSPlayerSDK/src/release/res"/></dataSet><mergedItems/></merger>

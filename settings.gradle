@@ -1,0 +1,1 @@
+include ':app', ':playerSDK', ':exoPlayerLib', ':castCompanionLibraryandroid', ':hLSPlayerSDK', ':googlemediaframework'
