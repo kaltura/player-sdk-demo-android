@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/../player-sdk-native-android/exoPlayerLib/exoPlayerLib.iml" filepath="$PROJECT_DIR$/../player-sdk-native-android/exoPlayerLib/exoPlayerLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/../player-sdk-native-android/googlemediaframework/googlemediaframework.iml" filepath="$PROJECT_DIR$/../player-sdk-native-android/googlemediaframework/googlemediaframework.iml" />
       <module fileurl="file://$PROJECT_DIR$/../player-sdk-native-android/hLSPlayerSDK/hLSPlayerSDK.iml" filepath="$PROJECT_DIR$/../player-sdk-native-android/hLSPlayerSDK/hLSPlayerSDK.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../player-sdk-native-android/hLSPlayerSDK/hLSPlayerSDK.iml" filepath="$PROJECT_DIR$/../player-sdk-native-android/hLSPlayerSDK/hLSPlayerSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/player-sdk-demo-android.iml" filepath="$PROJECT_DIR$/player-sdk-demo-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/../player-sdk-native-android/playerSDK/playerSDK.iml" filepath="$PROJECT_DIR$/../player-sdk-native-android/playerSDK/playerSDK.iml" />
     </modules>
