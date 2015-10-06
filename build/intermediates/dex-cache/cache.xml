@@ -2,32 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/player-sdk-demo-android/app/build/intermediates/exploded-aar/player-sdk-demo-android/exoPlayerLib/unspecified/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.0"
-        sha1="6249df1b746cc59b3a1d610282eec2711e9ba5b5">
-        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/player-sdk-demo-android/app/build/intermediates/pre-dexed/debug/classes-8338afd456e2108b3c152763cac34b18e1921b2d.jar" />
-    </item>
-    <item
-        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/player-sdk-demo-android/app/build/intermediates/exploded-aar/player-sdk-demo-android/castCompanionLibraryandroid/unspecified/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.0"
-        sha1="5513210ebfc61d01f2fa9c3cd49ec1bec57c407f">
-        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/player-sdk-demo-android/app/build/intermediates/pre-dexed/debug/classes-6ce29f3eb449a33d80bdb4212462bcc6f831629a.jar" />
-    </item>
-    <item
         jar="/Users/nissopa/Desktop/KalturaAndroidProjects/player-sdk-demo-android/app/build/intermediates/exploded-aar/player-sdk-demo-android/playerSDK/unspecified/jars/classes.jar"
         jumboMode="false"
         revision="23.0.0"
-        sha1="07527eb7de2e9dd14b95a3f09c4ab8664ff8f9ca">
+        sha1="344ec797c608ffb5d3d66ae40bf4fcbae1ffd2e3">
         <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/player-sdk-demo-android/app/build/intermediates/pre-dexed/debug/classes-ba495ffcff11d5bd8d6c004e44fedc30cb309d09.jar" />
-    </item>
-    <item
-        jar="/Users/nissopa/Desktop/KalturaAndroidProjects/player-sdk-demo-android/app/build/intermediates/exploded-aar/player-sdk-demo-android/googlemediaframework/unspecified/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.0"
-        sha1="7723b9e9be6cb1aa9931c72d10c2cf00a68602e2">
-        <dex dex="/Users/nissopa/Desktop/KalturaAndroidProjects/player-sdk-demo-android/app/build/intermediates/pre-dexed/debug/classes-fd300b6c66cf0340e6ba77a6ec6661ef0b8ef15c.jar" />
     </item>
 
 </items>

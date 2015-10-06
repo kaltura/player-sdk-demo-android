@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +15,7 @@ import android.widget.Button;
 import com.kaltura.playersdk.PlayerViewController;
 
 public class MainActivity extends AppCompatActivity implements PlayerFragment.OnFragmentInteractionListener {
-    private PlayerViewController mPlayerView;
+    private PlayerFragment mPlayerFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,11 +26,19 @@ public class MainActivity extends AppCompatActivity implements PlayerFragment.On
             @Override
             public void onClick(View view) {
                 view.setVisibility(View.INVISIBLE);
-                Fragment fragment = new PlayerFragment();
+                boolean isPlayer = false;
+                if (mPlayerFragment == null) {
+                    mPlayerFragment = new PlayerFragment();
+                    isPlayer = true;
+                }
                 FragmentTransaction transaction = getFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_up, R.anim.slide_down);
 //        transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
-                transaction.add(R.id.fragment_container, fragment);
+                transaction.add(R.id.fragment_container, mPlayerFragment);
+                transaction.addToBackStack(mPlayerFragment.getClass().getName());
                 transaction.commit();
+                if (!isPlayer){
+                    mPlayerFragment.resumePlayer();
+                }
             }
         });
     }
@@ -58,6 +67,18 @@ public class MainActivity extends AppCompatActivity implements PlayerFragment.On
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+        Log.d("URI", uri.toString());
+    }
 
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            mPlayerFragment.pausePlayer();
+            getFragmentManager().popBackStack();
+            ((Button)findViewById(R.id.button)).setVisibility(View.VISIBLE);
+        }
+        else {
+            super.onBackPressed();
+        }
     }
 }
