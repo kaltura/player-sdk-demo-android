@@ -28,7 +28,7 @@ public class PlayerFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private boolean isResumed = false;
     private View mFragmentView = null;
     private PlayerViewController mPlayerView;
 
@@ -60,6 +60,14 @@ public class PlayerFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public void pausePlayer() {
+        mPlayerView.releaseAndSavePosition();
+    }
+
+    public void resumePlayer() {
+        mPlayerView.resumePlayer();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,31 +84,31 @@ public class PlayerFragment extends Fragment {
         // Inflate the layout for this fragment
         if(mFragmentView == null) {
             mFragmentView = inflater.inflate(R.layout.fragment_fullscreen, container, false);
+            mPlayerView = (PlayerViewController) mFragmentView.findViewById(R.id.player);
+            mPlayerView.loadPlayerIntoActivity(getActivity());
+
+            KPPlayerConfig config = new  KPPlayerConfig("http://cdnapi.kaltura.com", "31638861", "1831271");
+            config.setEntryId("1_ng282arr");
+            mPlayerView.setComponents(config.getVideoURL());
+            mPlayerView.addEventListener(new KPEventListener() {
+                @Override
+                public void onKPlayerStateChanged(PlayerViewController playerViewController, KPlayerState state) {
+                    Log.d("KPlayer State Changed", state.toString());
+                }
+
+                @Override
+                public void onKPlayerPlayheadUpdate(PlayerViewController playerViewController, float currentTime) {
+                    Log.d("KPlayer State Changed", Float.toString(currentTime));
+                }
+
+                @Override
+                public void onKPlayerFullScreenToggeled(PlayerViewController playerViewController, boolean isFullscreen) {
+                    Log.d("KPlayer toggeled", Boolean.toString(isFullscreen));
+                }
+            });
         }
 
-        mPlayerView = (PlayerViewController) mFragmentView.findViewById(R.id.player);
-        mPlayerView.loadPlayerIntoActivity(getActivity());
 
-        KPPlayerConfig config = new  KPPlayerConfig("http://cdnapi.kaltura.com", "30824441", "1281471");
-        config.addConfig("streamerType", "auto");
-        config.setEntryId("1_riegaamf");
-        mPlayerView.setComponents(config.getVideoURL());
-        mPlayerView.addEventListener(new KPEventListener() {
-            @Override
-            public void onKPlayerStateChanged(PlayerViewController playerViewController, KPlayerState state) {
-                Log.d("KPlayer State Changed", state.toString());
-            }
-
-            @Override
-            public void onKPlayerPlayheadUpdate(PlayerViewController playerViewController, float currentTime) {
-                Log.d("KPlayer State Changed", Float.toString(currentTime));
-            }
-
-            @Override
-            public void onKPlayerFullScreenToggeled(PlayerViewController playerViewController, boolean isFullscreen) {
-                Log.d("KPlayer toggeled", Boolean.toString(isFullscreen));
-            }
-        });
         return mFragmentView;
     }
 
@@ -127,6 +135,10 @@ public class PlayerFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+
+
+
 
     /**
      * This interface must be implemented by activities that contain this
