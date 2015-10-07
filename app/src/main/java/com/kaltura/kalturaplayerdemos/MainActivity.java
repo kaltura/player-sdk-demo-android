@@ -7,9 +7,11 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.kaltura.playersdk.PlayerViewController;
@@ -43,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements PlayerFragment.On
         });
     }
 
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -63,6 +68,16 @@ public class MainActivity extends AppCompatActivity implements PlayerFragment.On
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (!isFinishing()) {
+            mPlayerFragment.killPlayer();
+            mPlayerFragment = null;
+            ((Button)findViewById(R.id.button)).setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

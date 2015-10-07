@@ -64,6 +64,13 @@ public class PlayerFragment extends Fragment {
         mPlayerView.releaseAndSavePosition();
     }
 
+    public void killPlayer() {
+        mPlayerView.removePlayer();
+        mPlayerView = null;
+        getActivity().getFragmentManager().beginTransaction().remove(this).commit();
+    }
+
+
     public void resumePlayer() {
         mPlayerView.resumePlayer();
     }
