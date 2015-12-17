@@ -96,6 +96,7 @@ public class PlayerFragment extends Fragment {
 
             KPPlayerConfig config = new  KPPlayerConfig("http://cdnapi.kaltura.com", "31638861", "1831271");
             config.setEntryId("1_ng282arr");
+            mPlayerView.initWithConfiguration(config);
             mPlayerView.setComponents(config.getVideoURL());
             mPlayerView.addEventListener(new KPEventListener() {
                 @Override
