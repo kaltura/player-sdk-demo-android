@@ -6,14 +6,8 @@ project(':castCompanionLibraryandroid').projectDir=new File('../player-sdk-nativ
 include ':exoPlayerLib'
 project(':exoPlayerLib').projectDir=new File('../player-sdk-native-android/exoPlayerLib')
 
-
 include ':googlemediaframework'
 project(':googlemediaframework').projectDir=new File('../player-sdk-native-android/googlemediaframework')
-
-
-include ':hLSPlayerSDK'
-project(':hLSPlayerSDK').projectDir=new File('../player-sdk-native-android/hLSPlayerSDK')
-
 
 include ':playerSDK'
 project(':playerSDK').projectDir=new File('../player-sdk-native-android/playerSDK')
