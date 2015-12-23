@@ -1,8 +1,5 @@
 include ':app'
 
-include ':castCompanionLibraryandroid'
-project(':castCompanionLibraryandroid').projectDir=new File('../player-sdk-native-android/castCompanionLibraryandroid')
-
 include ':exoPlayerLib'
 project(':exoPlayerLib').projectDir=new File('../player-sdk-native-android/exoPlayerLib')
 
