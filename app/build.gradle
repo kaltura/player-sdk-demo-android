@@ -19,11 +19,6 @@ android {
     }
 }
 
-repositories {
-    flatDir {
-        dirs '../../player-sdk-native-android/playerSDK/libs'
-    }
-}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
