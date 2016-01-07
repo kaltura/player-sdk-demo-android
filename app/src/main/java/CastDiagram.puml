@@ -1,0 +1,67 @@
+@startuml
+
+
+class MediaRouter.Callback {
++ void onRouteSelected() : <b><color:red>MediaRouter</color> router, <b><color:red>MediaRouter.RouteInfo</color> route
++ void onRouteUnselected() : <b><color:red>MediaRouter</color> router, <b><color:red>MediaRouter.RouteInfo</color> route
++ void onRouteAdded() : <b><color:red>MediaRouter</color> router, <b><color:red>MediaRouter.RouteInfo</color> route
++ void onRouteRemoved() : <b><color:red>MediaRouter</color> router, <b><color:red>MediaRouter.RouteInfo</color> route
+}
+class KRouterCallBack {
+- KRouterCallbackListener : mListener
+- MediaRouter : mRouter
+- boolean : didFindDevices
++ void setListener() : <b><color:red>KRouterCallbackListener</color> listener
++ void setRouter() : <b><color:red>MediaRouter</color> router
++ MediaRouter.RouteInfo routeById() : <b><color:red>String</color> routeId
+}
+interface KRouterCallbackListener {
++ void onDeviceSelected() : <b><color:red>CastDevice</color> castDeviceSelected
++ void onRouteAdded() : <b><color:red>boolean</color> isAdded <b><color:red>KRouterInfo</color> route
++ void onFoundDevices() : <b><color:red>boolean</color> didFound
+}
+
+interface KCastRouterManager{
++ void disconnect()
++ void connectDevice() : <b><color:red>String</color> deviceId
++ void setCastRouterManagerListener() : <b><color:red>KCastRouterManagerListener</color> listener
++ void enableKalturaCastButton() : <b><color:red>boolean</color> enabled
+}
+
+interface KRouterManagerListener {
++ void onShouldDisconnectCastDevice()
++ void onConnecting()
++ void onStartCasting() : <b><color:red>GoogleApiClient</color> apiClient <b><color:red>CastDevice</color> connectedDevice);
+}
+
+interface KCastRouterManagerListener {
++ void castButtonClicked()
++ void castDeviceConnectionState() : <b><color:red>boolean</color> isConnected
++ void didDetectCastDevices() : <b><color:red>boolean</color> didDetect
++ void addedCastDevice() : <b><color:red>KRouterInfo</color> info
++ void removedCastDevice() : <b><color:red>KRouterInfo</color> info
+}
+
+class KRouterManager {
++ void initialize() : <b><color:red>String</color> castAppIdsInJSON
++ MediaRouteSelector getSelector()
++ void sendMessage() : <b><color:blue>final</color> <color:red>String</color> nameSpace, <b><color:blue>final</color> <color:red>String</color> message
++ boolean shouldEnableKalturaCastButton()
++ KCastRouterManagerListener getAppListener()
+}
+
+class KRouterInfo {
++ String getRouterName()
++ void setRouterName() : <b><color:red>String</color> routerName
++ String getRouterId()
++ void setRouterId() : <b><color:red>String</color> routerId
+}
+
+
+MediaRouter.Callback <|-- KRouterCallBack
+KRouterCallBack -* KRouterCallbackListener
+KRouterCallbackListener <|--- KRouterManager
+KCastRouterManager <|--- KRouterManager
+KRouterManagerListener --|> KRouterCallbackListener
+KRouterManager --* KRouterManagerListener
+@enduml

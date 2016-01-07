@@ -2,7 +2,9 @@ package com.kaltura.kalturaplayerdemos;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,37 +18,23 @@ import android.widget.Button;
 
 import com.kaltura.playersdk.PlayerViewController;
 
-public class MainActivity extends AppCompatActivity implements PlayerFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements PlayerFragment.OnFragmentInteractionListener, View.OnClickListener {
     private PlayerFragment mPlayerFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         Button button = (Button)findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                view.setVisibility(View.INVISIBLE);
-                boolean isPlayer = false;
-                if (mPlayerFragment == null) {
-                    mPlayerFragment = new PlayerFragment();
-                    isPlayer = true;
-                }
-                FragmentTransaction transaction = getFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_up, R.anim.slide_down);
-//        transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
-                transaction.add(R.id.fragment_container, mPlayerFragment);
-                transaction.addToBackStack(mPlayerFragment.getClass().getName());
-                transaction.commit();
-                if (!isPlayer){
-                    mPlayerFragment.resumePlayer();
-                }
-            }
-        });
+        button.setOnClickListener(this);
+        button = (Button)findViewById(R.id.button2);
+        button.setOnClickListener(this);
     }
 
-
-
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -73,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements PlayerFragment.On
     @Override
     protected void onPause() {
         super.onPause();
-        if (!isFinishing()) {
+        if (mPlayerFragment != null && !isFinishing()) {
             mPlayerFragment.killPlayer();
             mPlayerFragment = null;
             ((Button)findViewById(R.id.button)).setVisibility(View.VISIBLE);
@@ -90,10 +78,34 @@ public class MainActivity extends AppCompatActivity implements PlayerFragment.On
         if (getFragmentManager().getBackStackEntryCount() > 0) {
             mPlayerFragment.pausePlayer();
             getFragmentManager().popBackStack();
-            ((Button)findViewById(R.id.button)).setVisibility(View.VISIBLE);
+            findViewById(R.id.button).setVisibility(View.VISIBLE);
         }
         else {
             super.onBackPressed();
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.button) {
+            v.setVisibility(View.INVISIBLE);
+            findViewById(R.id.button2).setVisibility(View.INVISIBLE);
+            boolean isPlayer = false;
+            if (mPlayerFragment == null) {
+                mPlayerFragment = new PlayerFragment();
+                isPlayer = true;
+            }
+            FragmentTransaction transaction = getFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_up, R.anim.slide_down);
+//        transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
+            transaction.add(R.id.fragment_container, mPlayerFragment);
+            transaction.addToBackStack(mPlayerFragment.getClass().getName());
+            transaction.commit();
+            if (!isPlayer) {
+                mPlayerFragment.resumePlayer();
+            }
+        } else {
+            Intent intent = new Intent(this, OfflineActivity.class);
+            startActivity(intent);
         }
     }
 }
