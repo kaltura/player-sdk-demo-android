@@ -5,7 +5,9 @@ import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -94,9 +96,38 @@ public class PlayerFragment extends Fragment {
             mPlayerView = (PlayerViewController) mFragmentView.findViewById(R.id.player);
             mPlayerView.loadPlayerIntoActivity(getActivity());
 
-            KPPlayerConfig config = new  KPPlayerConfig("http://cdnapi.kaltura.com", "31638861", "1831271");
-            config.setEntryId("1_ng282arr");
+//            mPlayerView.addKPlayerEventListener("onEnableKeyboardBinding", "someID", new PlayerViewController.EventListener() {
+//                @Override
+//                public void handler(String eventName, String params) {
+//                    Log.d("customplgin", eventName);
+//                }
+//            });
+            KPPlayerConfig config = new KPPlayerConfig("http://kgit.html5video.org/tags/v2.39.rc8/mwEmbedFrame.php", "30535492", "591531");
+            config.setEntryId("0_dxnc2oj8");
+//            config.addConfig("proxyData", "{\"MediaID\":\"296461\",\"iMediaID\":\"296461\",\"initObj\":{\"ApiPass\":\"11111\",\"ApiUser\":\"tvpapi_225\",\"DomainID\":\"282672\",\"Locale\":{\"LocaleCountry\":\"\",\"LocaleDevice\":\"\",\"LocaleLanguage\":\"\",\"LocaleUserState\":\"Unknown\"},\"Platform\":\"Cellular\",\"SiteGuid\":\"6142289\",\"UDID\":\"123456\"},\"mediaType\":\"0\",\"picSize\":\"640x360\",\"withDynamic\":\"false\"}");
+//            config.addConfig("tvpapiGetLicensedLinks.plugin", "true");
+//            config.addConfig("TVPAPIBaseUrl", "http://tvpapi-stg.as.tvinci.com/v3_4/gateways/jsonpostgw.aspx?m");
+//            config.addConfig("liveCore.disableLiveCheck", "true");
+//            KPPlayerConfig config = new  KPPlayerConfig("http://cdnapi.kaltura.com", "31638861", "1831271");
+//            config.setEntryId("1_ng282arr");
+//            config.addConfig("doubleClick.plugin", "true");
+//            config.addConfig("doubleClick.adTagUrl", "http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=xml_vmap1&unviewed_position_start=1&cust_params=sample_ar%3Dpremidpost&cmsid=496&vid=short_onecue&correlator=[timestamp]");
             mPlayerView.initWithConfiguration(config);
+
+
+            
+            // Add swipe rcogniser
+            final GestureDetector gestureDetector = new GestureDetector(getActivity(), new CustomeGestureDetector());
+            mPlayerView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    return gestureDetector.onTouchEvent(event);
+                }
+            });
+
+
+
+
             mPlayerView.addEventListener(new KPEventListener() {
                 @Override
                 public void onKPlayerStateChanged(PlayerViewController playerViewController, KPlayerState state) {
@@ -160,6 +191,38 @@ public class PlayerFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+    }
+
+
+    // Gesture recogniser
+    private class CustomeGestureDetector extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            if(e1 == null || e2 == null) return false;
+            if(e1.getPointerCount() > 1 || e2.getPointerCount() > 1) return false;
+            else {
+                try { // right to left swipe .. go to next page
+                    if(e1.getX() - e2.getX() > 100 && Math.abs(velocityX) > 800) {
+                        //do your stuff
+                        return true;
+                    } //left to right swipe .. go to prev page
+                    else if (e2.getX() - e1.getX() > 100 && Math.abs(velocityX) > 800) {
+                        //do your stuff
+                        return true;
+                    } //bottom to top, go to next document
+                    else if(e1.getY() - e2.getY() > 100 && Math.abs(velocityY) > 800) {
+                        //do your stuff
+                        return true;
+                    } //top to bottom, go to prev document
+                    else if (e2.getY() - e1.getY() > 100 && Math.abs(velocityY) > 800 ) {
+                        //do your stuff
+                        return true;
+                    }
+                } catch (Exception e) { // nothing
+                }
+                return false;
+            }
+        }
     }
 
 }
