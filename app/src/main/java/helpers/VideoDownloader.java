@@ -49,6 +49,11 @@ public class VideoDownloader extends AsyncTask<String, Long, String> {
         String link = params[0];
         try {
             URL url = new URL(link);
+            if (url.getPath().endsWith(".mp4")) {
+                mFileName += ".mp4";
+            } else if (url.getPath().endsWith(".wvm")) {
+                mFileName += ".wvm";
+            }
             URLConnection connection = url.openConnection();
             connection.connect();
             mFileLength = new Integer(connection.getContentLength());

@@ -2,6 +2,8 @@ package com.kaltura.kalturaplayerdemos;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,8 +27,30 @@ public class DownloadCell extends RelativeLayout {
         super(context, attrs, defStyleAttr);
     }
 
-    public void setParams(HashMap<String, Object> params) {
-        mParams = params;
-        ((TextView)findViewById(R.id.textView2)).setText((String) params.get("title"));
+
+    public TextView getTextView() {
+        return (TextView)findViewById(R.id.textView2);
     }
+
+    public ProgressBar getProgressBar() {
+        return (ProgressBar)findViewById(R.id.progressBar);
+    }
+
+    public void updateProgress(float progress) {
+        getProgressBar().setProgress((int)(progress * 100));
+    }
+
+    public void setCellState(boolean isInputState) {
+        if (isInputState) {
+            getProgressBar().setProgress(100);
+            getTextView().setVisibility(VISIBLE);
+            getProgressBar().setVisibility(INVISIBLE);
+        } else {
+            getProgressBar().setProgress(0);
+            getTextView().setVisibility(INVISIBLE);
+            getProgressBar().setVisibility(VISIBLE);
+        }
+    }
+
+
 }

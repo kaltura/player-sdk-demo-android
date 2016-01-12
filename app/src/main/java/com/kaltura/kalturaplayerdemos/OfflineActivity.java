@@ -1,27 +1,32 @@
 package com.kaltura.kalturaplayerdemos;
 
+import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
+import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.kaltura.playersdk.KPPlayerConfig;
+import com.kaltura.playersdk.LocalAssetsManager;
+import com.kaltura.playersdk.PlayerViewController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import helpers.AssetsFetcher;
 import helpers.VideoDownloader;
 
-public class OfflineActivity extends Activity {
+public class OfflineActivity extends Activity implements DemoAdapter.MyClickListener, PlayerFragment.OnFragmentInteractionListener, PlayerViewController.SourceURLProvider {
     private KPPlayerConfig mConfig;
+    private HashMap<String, String> values;
+    private PlayerFragment mPlayerFragment;
+    DemoAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,68 +34,148 @@ public class OfflineActivity extends Activity {
         ArrayList<HashMap<String, Object>> cells = AssetsFetcher.loadJSONArrayFromAssets(this, "demoParams.json");
         Log.d("test", cells.toString());
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setBackgroundColor(Color.RED);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        final DemoAdapter adapter = new DemoAdapter(this, cells);
+        adapter = new DemoAdapter(this, cells);
+        adapter.setOnItemClickListener(this);
         recyclerView.setAdapter(adapter);
+    }
 
-        recyclerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    private HashMap<String, String> getValues() {
+        if (values == null) {
+            values = new HashMap<>();
+        }
+        return values;
+    }
+
+
+    private void fetchFile(final DownloadCell view, final String title, String fileName, final String url) {
+        view.setCellState(false);
+        VideoDownloader downloader = new VideoDownloader(this, fileName, new VideoDownloader.VideoDownloaderListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 4:
-
-                        break;
-                    case 5:
-                        downloadVideo(adapter, (DownloadCell)view);
-                        break;
-                    case 6:
-                        fetchParams(adapter);
-                        break;
+            public void onDownloadFinished(String fileName) {
+                view.setCellState(true);
+                if (title != null) {
+                    view.getTextView().setText(title);
+                    getValues().put("OfflineURL", fileName);
+                } else {
+                    ArrayList<?> test = AssetsFetcher.loadConfigFromFile(OfflineActivity.this);
+                    if (test != null) {
+                        HashMap<String, String> config = (HashMap<String, String>)test.get(0);
+                        config.put("Config URl", url);
+                        adapter.loadRemoteConfig((HashMap)test.get(0));
+                    }
                 }
+            }
+
+            @Override
+            public void onProgressUpdated(float progress) {
+                 view.updateProgress(progress);
+            }
+        });
+        downloader.execute(url);
+    }
+
+
+    private void getLicensce(final DownloadCell view) {
+        LocalAssetsManager.registerAsset(this, getConfig(), getValues().get("FlavourId"), getValues().get("OfflineURL"), new LocalAssetsManager.AssetEventListener() {
+            @Override
+            public void onRegistered(String assetPath) {
+                view.post(new Runnable() {
+                    @Override
+                    public void run() {view.getTextView().setText("Licensced");}
+                });
+            }
+
+            @Override
+            public void onFailed(String assetPath, Exception error) {
+                view.post(new Runnable() {
+                    @Override
+                    public void run() {view.getTextView().setText("Licensce Error");}
+                });
+            }
+
+            @Override
+            public void onStatus(String assetPath, Object status) {
+
             }
         });
     }
 
-    private void fetchParams(DemoAdapter adapter) {
-//        String domain = ((InputCellView)adapter.getItem(0)).getValue();
-//        String uiConf = ((InputCellView)adapter.getItem(1)).getValue();
-//        String partnerId = ((InputCellView)adapter.getItem(2)).getValue();
-//        String entryId = ((InputCellView)adapter.getItem(3)).getValue();
-//        mConfig = new KPPlayerConfig(domain, uiConf,partnerId);
-//        mConfig.setEntryId(entryId);
+    private KPPlayerConfig getConfig() {
+        KPPlayerConfig config = new KPPlayerConfig(getValues().get("Domain"), getValues().get("UIConf"), getValues().get("PartnerId"));
+        config.setEntryId(getValues().get("EntryId"));
+        config.setKS(getValues().get("KS"));
+        return config;
     }
 
-    private void downloadVideo(DemoAdapter adapter, DownloadCell view) {
-        final TextView textView = (TextView)view.findViewById(R.id.textView2);
-        if (!textView.getTag().equals("Get Licensce")) {
-            textView.setVisibility(View.INVISIBLE);
-            final ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
-            progressBar.setVisibility(View.VISIBLE);
-
-//        String url = ((InputCellView)adapter.getView(4, null, null)).getValue();
-//            String url = "http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4";
-            VideoDownloader downloader = new VideoDownloader(this, "test", new VideoDownloader.VideoDownloaderListener() {
-                @Override
-                public void onDownloadFinished(String fileName) {
-                    progressBar.setProgress(100);
-                    progressBar.setVisibility(View.INVISIBLE);
-                    textView.setVisibility(View.VISIBLE);
-                    textView.setText("Get Licensce");
+    @Override
+    public void onRowClick(DownloadCell v, int position) {
+        switch (position) {
+            case 8:
+                if (v.getTextView().getText().equals("Get Licensce")) {
+                    getLicensce(v);
+                } else if (getValues().get("Offline URL") != null) {
+                    fetchFile(v, "Get Licensce", getValues().get("EntryId"), getValues().get("Offline URL"));
                 }
-
-                @Override
-                public void onProgressUpdated(float progress) {
-                    progressBar.setProgress((int) (progress * 100));
+                break;
+            case 10:
+                boolean isPlayer = false;
+                if (mPlayerFragment == null) {
+                    mPlayerFragment = new PlayerFragment();
+                    isPlayer = true;
                 }
-            });
-//            downloader.execute(url);
-        } else {
-            getLicensce();
+                findViewById(R.id.recyclerView).setVisibility(View.INVISIBLE);
+                mPlayerFragment.setPlayerConfig(getConfig());
+                FragmentTransaction transaction = getFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_up, R.anim.slide_down);
+//        transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
+                transaction.add(R.id.fragment_container, mPlayerFragment);
+                transaction.addToBackStack(mPlayerFragment.getClass().getName());
+                transaction.commit();
+                if (!isPlayer) {
+                    mPlayerFragment.resumePlayer();
+                }
+                break;
+
+            case 11:
+                String url = null;
+                if (getValues().get("Config URl") != null) {
+                    url = getValues().get("Config URl");
+                } else {
+                    SharedPreferences preferences = getSharedPreferences("KalturaPrefs", MODE_PRIVATE);
+                    if (preferences != null) {
+                        url = preferences.getString("configURL", null);
+                    }
+                }
+                if (url == null) {
+                    SharedPreferences.Editor editor = getSharedPreferences("KalturaPrefs", MODE_PRIVATE).edit();
+                    url = "http://192.168.160.195/demoConfig.json";
+                    editor.putString("configURL", url);
+                    editor.commit();
+                }
+                fetchFile(v, null, "config.json", url);
+                break;
         }
     }
 
-    private void getLicensce() {
-
+    @Override
+    public void onTextChanged(String key, String text) {
+        if (key.equals("Config URl")) {
+            SharedPreferences.Editor editor = getSharedPreferences("KalturaPrefs", MODE_PRIVATE).edit();
+            editor.putString("configURL", text);
+            editor.commit();
+        }
+        getValues().put(key, text);
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+        Log.d("URI", uri.toString());
+    }
+
+    @Override
+    public String getURL(String entryId, String currentURL) {
+        return getValues().get("OfflineURL");
+    }
 }
