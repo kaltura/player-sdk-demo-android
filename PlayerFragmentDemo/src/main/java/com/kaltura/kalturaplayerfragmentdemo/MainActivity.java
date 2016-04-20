@@ -1,28 +1,26 @@
-package com.kaltura.kalturaplayerdemos;
+package com.kaltura.kalturaplayerfragmentdemo;
 
-import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 
-import com.kaltura.playersdk.PlayerViewController;
-
 public class MainActivity extends AppCompatActivity implements PlayerFragment.OnFragmentInteractionListener {
+
+    private static final String TAG = "PlayerFragmentDemo";
     private PlayerFragment mPlayerFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         Button button = (Button)findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements PlayerFragment.On
     @Override
     protected void onPause() {
         super.onPause();
-        if (!isFinishing()) {
+        if (!isFinishing() && mPlayerFragment != null) {
             mPlayerFragment.killPlayer();
             mPlayerFragment = null;
             ((Button)findViewById(R.id.button)).setVisibility(View.VISIBLE);
@@ -82,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements PlayerFragment.On
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-        Log.d("URI", uri.toString());
+        Log.d(TAG, "URI " + uri.toString());
     }
 
     @Override

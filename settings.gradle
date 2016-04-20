@@ -1,4 +1,4 @@
-include ':app'
+include ':PlayerFragmentDemo'
 
 include ':exoPlayerLib'
 project(':exoPlayerLib').projectDir=new File('../player-sdk-native-android/exoPlayerLib')

@@ -1,4 +1,4 @@
-package com.kaltura.kalturaplayerdemos;
+package com.kaltura.kalturaplayerfragmentdemo;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -15,6 +15,7 @@ import com.kaltura.playersdk.KPPlayerConfig;
 import com.kaltura.playersdk.PlayerViewController;
 import com.kaltura.playersdk.events.KPEventListener;
 import com.kaltura.playersdk.events.KPlayerState;
+import com.kaltura.playersdk.types.KPError;
 
 
 /**
@@ -25,9 +26,10 @@ import com.kaltura.playersdk.events.KPlayerState;
  * Use the {@link PlayerFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PlayerFragment extends Fragment {
+public class PlayerFragment extends Fragment implements KPEventListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String TAG = "PlayerFragment";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private boolean isResumed = false;
@@ -67,9 +69,11 @@ public class PlayerFragment extends Fragment {
     }
 
     public void killPlayer() {
-        mPlayerView.removePlayer();
-        mPlayerView = null;
-        getActivity().getFragmentManager().beginTransaction().remove(this).commit();
+        if (mPlayerView != null) {
+            mPlayerView.removePlayer();
+            mPlayerView = null;
+            getActivity().getFragmentManager().beginTransaction().remove(this).commit();
+        }
     }
 
 
@@ -102,8 +106,7 @@ public class PlayerFragment extends Fragment {
 //                    Log.d("customplgin", eventName);
 //                }
 //            });
-            KPPlayerConfig config = new KPPlayerConfig("http://cdnapi.kaltura.com", "20540612", "243342");
-            config.setEntryId("1_sf5ovm7u");
+            KPPlayerConfig config = new KPPlayerConfig("http://kgit.html5video.org/branches/master/mwEmbedFrame.php", "20540612", "243342").setEntryId("1_sf5ovm7u");
             mPlayerView.initWithConfiguration(config);
 
 
@@ -123,17 +126,22 @@ public class PlayerFragment extends Fragment {
             mPlayerView.addEventListener(new KPEventListener() {
                 @Override
                 public void onKPlayerStateChanged(PlayerViewController playerViewController, KPlayerState state) {
-                    Log.d("KPlayer State Changed", state.toString());
+                    Log.d(TAG, "KPlayer State Changed " + state.toString());
                 }
 
                 @Override
                 public void onKPlayerPlayheadUpdate(PlayerViewController playerViewController, float currentTime) {
-                    Log.d("KPlayer State Changed", Float.toString(currentTime));
+                    Log.d(TAG, "KPlayer onKPlayerPlayheadUpdate " + Float.toString(currentTime));
                 }
 
                 @Override
                 public void onKPlayerFullScreenToggeled(PlayerViewController playerViewController, boolean isFullscreen) {
-                    Log.d("KPlayer toggeled", Boolean.toString(isFullscreen));
+                    Log.d(TAG, "KPlayer onKPlayerFullScreenToggeled " +  Boolean.toString(isFullscreen));
+                }
+
+                @Override
+                public void onKPlayerError(PlayerViewController playerViewController, KPError error) {
+                    Log.e(TAG, "KPlayer onKPlayerError " + error.getErrorMsg());
                 }
             });
         }
@@ -166,8 +174,25 @@ public class PlayerFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void onKPlayerStateChanged(PlayerViewController playerViewController, KPlayerState state) {
+        Log.d(TAG, "KPlayer State Changed " + state.toString());
+    }
 
+    @Override
+    public void onKPlayerError(PlayerViewController playerViewController, KPError error) {
 
+    }
+
+    @Override
+    public void onKPlayerPlayheadUpdate(PlayerViewController playerViewController, float currentTime) {
+        Log.d(TAG, "KPlayer onKPlayerPlayheadUpdate " +Float.toString(currentTime));
+    }
+
+    @Override
+    public void onKPlayerFullScreenToggeled(PlayerViewController playerViewController, boolean isFullscrenn) {
+
+    }
 
 
     /**
